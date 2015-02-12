@@ -1,16 +1,17 @@
-/* jshint node:true */
+/* jshint node:true, -W079 */
 'use strict';
 
+var Set = require('set');
 var _ = require('lodash');
 
 function draw(board) {
   var matrix = generateMatrix(board);
   var drawing = _.reduce(matrix, function(drawing, row, rowNum){
     row = _.map(row, function(x) {
-      if (x === null) {
-        return ' ';
-      } else {
+      if (typeof x === "number") {
         return x.toString();
+      } else {
+        return ' ';
       }
     });
     for (var i = 0; i <= 12; i+=4) {
@@ -36,12 +37,16 @@ function generateMatrix(board) {
       result[rowNum] = [];
     }
     if (val === ' ') {
-      result[rowNum].push(null);
+      result[rowNum].push(any());
     } else {
       result[rowNum].push(parseInt(val));
     }
     return result;
   }, []);
+}
+
+function any() {
+  return new Set([1,2,3,4,5,6,7,8,9]);
 }
 
 module.exports = {

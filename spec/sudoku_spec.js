@@ -1,7 +1,9 @@
-/* jshint node:true, jasmine:true */
+/* jshint node:true, jasmine:true, -W079 */
 'use strict';
 
+var Set = require('set');
 var sudoku = require('../index.js');
+
 var simpleBoard = '158 2  6 ' +
                   '2   8  9 ' +
                   ' 3  7 8 2' +
@@ -12,16 +14,20 @@ var simpleBoard = '158 2  6 ' +
                   ' 2  5   8' +
                   ' 7  9 413';
 
+var any = new Set([1,2,3,4,5,6,7,8,9]);
+
 var simpleMatrix = [
-  [1, 5, 8,          null, 2, null,    null, 6, null   ],
-  [2, null, null,    null, 8, null,    null, 9, null   ],
-  [null, 3, null,    null, 7, null,    8, null, 2      ],
-  [null, 6, null,    7, 4, null,       null, null, null],
-  [null, null, 4,    null, 6, null,    7, null, null   ],
-  [null, null, null, null, 1, 9,       null, 5, null   ],
-  [4, null, 9,       null, 3, null,    null, 2, null   ],
-  [null, 2, null,    null, 5, null,    null, null, 8   ],
-  [null, 7, null,    null, 9, null,    4, 1, 3         ]
+  [1, 5, 8,       any, 2, any,  any, 6, any  ],
+  [2, any, any,   any, 8, any,  any, 9, any  ],
+  [any, 3, any,   any, 7, any,  8, any, 2    ],
+
+  [any, 6, any,   7, 4, any,    any, any, any],
+  [any, any, 4,   any, 6, any,  7, any, any  ],
+  [any, any, any, any, 1, 9,    any, 5, any  ],
+
+  [4, any, 9,     any, 3, any,  any, 2, any  ],
+  [any, 2, any,   any, 5, any,  any, any, 8  ],
+  [any, 7, any,   any, 9, any,  4, 1, 3      ]
 ];
 
 var simpleDrawn = '+-------+-------+-------+\n' +
