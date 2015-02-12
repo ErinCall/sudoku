@@ -1,0 +1,19 @@
+{
+  "name": "sudoku",
+  "version": "0.0.0",
+  "description": "Sudoku Solver",
+  "main": "index.js",
+  "scripts": {
+    "test": "`npm bin`/jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.andrewlorente.com:AndrewLorente/sudoku.git"
+  },
+  "author": "Andrew Lorente",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.6.0",
+    "jasmine": "^2.2.1"
+  }
+}
